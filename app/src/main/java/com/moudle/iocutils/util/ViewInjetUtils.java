@@ -1,6 +1,7 @@
 package com.moudle.iocutils.util;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.lang.reflect.Proxy;
 
 public class ViewInjetUtils {
 
+    private static final String TAG = "ViewInjetUtils";
     public static void inject(Object context){
         intjectLayout(context);
         injectView(context);
@@ -64,8 +66,10 @@ public class ViewInjetUtils {
                             });*/
 
                             //动态代理 --- 替换了方法，onLongClick  onClick 方法
+                            //动态代理类似于转化
                             Method clickMethod = view.getClass().getMethod(listerName,listentype);
                             ListenerHandler handler = new ListenerHandler(method,context);
+                            Log.d(TAG, "injectClick: " + listentype.getClassLoader());
                             Object proxy = Proxy.newProxyInstance(listentype.getClassLoader(),new Class[]{listentype},handler);
                             //view.setonClickListener(this) 代理了this
                             clickMethod.invoke(view,proxy);

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * Created by Administrator on 2018/8/28.
  */
 
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.RUNTIME) //运行时有效，一直有效
 @Target(ElementType.TYPE)
 public @interface ContentView {
     int value();

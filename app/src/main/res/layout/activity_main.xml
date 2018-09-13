@@ -21,4 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_three"
+        android:text="动态代理"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

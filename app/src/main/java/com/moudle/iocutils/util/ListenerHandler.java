@@ -16,7 +16,7 @@ public class ListenerHandler implements InvocationHandler {
     private Method mMethod;
     private Object mObject;
 
-    //传入代理对象
+    //传入真正的代理对象
     public ListenerHandler(Method method,Object object){
         this.mMethod = method;
         this.mObject = object;
@@ -26,7 +26,11 @@ public class ListenerHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Log.d(TAG, "invoke: " + Arrays.toString(args) + method.getName());
+
+        //这里调用-----可以是从其他app中获取的内容，，代理对象，不一定有真实的mObject
         //调用代理类中的方法。
-        return mMethod.invoke(mObject,args);
+
+       // return mMethod.invoke(mObject,args);
+        return null;
     }
 }
